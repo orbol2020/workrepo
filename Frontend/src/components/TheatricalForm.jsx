@@ -13,6 +13,8 @@ const TheatricalForm = ({ formType, setFormType, resetForm }) => {
     state: '',
     city: '',
     mall: '',
+    mallArea: '',
+    pincode: '',
     image: ''
   });
 
@@ -190,26 +192,47 @@ const TheatricalForm = ({ formType, setFormType, resetForm }) => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="image">Image URL:</label>
+              <label htmlFor="mallArea">Mall Area:</label>
               <input
                 type="text"
-                id="image"
-                name="image"
-                value={formData.image}
+                id="mallArea"
+                name="mallArea"
+                value={formData.mallArea}
                 onChange={handleInputChange}
-              />
+                />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="pincode">Pincode:</label>
+                  <input
+                    type="text"
+                    id="pincode"
+                    name="pincode"
+                    value={formData.pincode}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="image">Image URL:</label>
+                  <input
+                    type="text"
+                    id="image"
+                    name="image"
+                    value={formData.image}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </>
+            )}
+            <div className="form-buttons">
+              <button type="submit">
+                {formType === 'add' ? 'Add Entry' : formType === 'update' ? 'Update Entry' : 'Delete Entry'}
+              </button>
+              <button type="button" onClick={resetForm}>Close</button>
             </div>
-          </>
-        )}
-        <div className="form-buttons">
-          <button type="submit">
-            {formType === 'add' ? 'Add Entry' : formType === 'update' ? 'Update Entry' : 'Delete Entry'}
-          </button>
-          <button type="button" onClick={resetForm}>Close</button>
+          </form>
         </div>
-      </form>
-    </div>
-  );
-};
-
-export default TheatricalForm;
+      );
+    };
+    
+    export default TheatricalForm;
+    

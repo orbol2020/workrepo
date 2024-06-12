@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const schematwo = mongoose.Schema(
+const schema = mongoose.Schema(
     {
         state: {
             type: String,
@@ -14,6 +14,14 @@ const schematwo = mongoose.Schema(
             type: String,
             required: [true, "Please enter Mall"],
         },
+        mallArea: {
+            type: String,
+            required: [true, "Please enter Mall Area"],
+        },
+        pincode: {
+            type: String,
+            required: [true, "Please enter Pincode"],
+        },
         image: {
             type: String,
         },
@@ -23,4 +31,4 @@ const schematwo = mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model("Theatrical", schematwo);
+module.exports = mongoose.model("Theatrical", schema);
