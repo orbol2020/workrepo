@@ -68,6 +68,24 @@ exports.updateByMall = async (req, res) => {
     }
 };
 
+// Fetch mall area and pincode by mall name
+
+exports.getMallDetails = async (req, res) => {
+    try {
+      const mall = await Theatrical.findOne({ mall: req.params.mall });
+      if (!mall) {
+        return res.status(404).json({ message: 'Mall not found' });
+      }
+      res.json({
+        mallArea: mall.mallArea,
+        pincode: mall.pincode
+      });
+    } catch (error) {
+      res.status(500).json({ message: 'Error fetching mall details', error });
+    }
+  };
+  
+
 // Delete by state name
 exports.deleteByState = async (req, res) => {
     try {

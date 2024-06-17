@@ -36,6 +36,12 @@ const TheatricalForm = ({ formType, setFormType, resetForm }) => {
     }
   }, [selectedCity]);
 
+  useEffect(() => {
+    if (selectedMall) {
+      fetchMallDetails(selectedMall);
+    }
+  }, [selectedMall]);
+
   const fetchStates = async () => {
     try {
       const response = await axios.get('http://localhost:5000/api/theatrical/states');
@@ -60,6 +66,20 @@ const TheatricalForm = ({ formType, setFormType, resetForm }) => {
       setMalls(response.data);
     } catch (error) {
       console.error('Error fetching malls:', error);
+    }
+  };
+
+  const fetchMallDetails = async (mall) => {
+    try {
+      const response = await axios.get(`http://localhost:5000/api/theatrical/mall/${mall}`);
+      const { mallArea, pincode } = response.data;
+      setFormData(prevData => ({
+        ...prevData,
+        mallArea,
+        pincode
+      }));
+    } catch (error) {
+      console.error('Error fetching mall details:', error);
     }
   };
 
@@ -235,4 +255,3 @@ const TheatricalForm = ({ formType, setFormType, resetForm }) => {
     };
     
     export default TheatricalForm;
-    

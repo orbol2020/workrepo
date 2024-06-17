@@ -11,6 +11,9 @@ router.get('/cities/:state', theatricalController.getCitiesByState);
 // Route to get all malls by city name
 router.get('/malls/:city', theatricalController.getMallsByCity);
 
+// Route to get details of a mall by mall name
+router.get('/mall/:mall', theatricalController.getMallDetails);
+
 // Route to update fields by state name, city name, or mall name
 router.put('/update/state/:state', theatricalController.updateByState);
 router.put('/update/city/:city', theatricalController.updateByCity);
