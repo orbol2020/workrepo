@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-
+//always store as string, as "get" requests dont work with numbers. Even if you have a number store  
+//a string and then convert it back after querying later on when required. Keep it in mind.
 const schemathree = mongoose.Schema(
     
     {
@@ -11,20 +12,20 @@ const schemathree = mongoose.Schema(
 
         screenID :
         {
-            type: Number,
+            type: String,
             required: [true, "Please enter screenID"],
         },
 
         seatingCapacity:
         {
-            type: Number,
+            type: String,
             required: [true, "Please enter seatingCapacity"],
         },
 
         cost:
         {
-            type: Number,
-            required: [false, "Please enter cost"],
+            type: String,
+            required: [true, "Please enter cost"],
         },
     },
     

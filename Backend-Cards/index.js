@@ -5,6 +5,7 @@ const connectDB = require("./mongoconn");
 const bodyParser = require('body-parser');
 const cloudinary = require('cloudinary').v2; 
 const theatricalRoutes = require("./theatricalRoutes");
+const screenRoutes = require("./screenRoutes");
 
 const cors = require('cors');
 
@@ -26,9 +27,11 @@ app.use('/api/details', detailsRoutes);
 
 app.use('/api/theatrical', theatricalRoutes);
 
+app.use('/api/screen',screenRoutes);
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).send('Something broke!');
+    res.status(500).json({message: err});
 });
 
 const PORT = process.env.PORT || 3000;
