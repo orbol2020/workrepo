@@ -54,5 +54,5 @@ const parseAndUploadXLSX = (filePath) => {
 };
 
  
-const filePath = 'C:\\Users\\91824\\Downloads\\excel.csv';
+const filePath = 'C:\\Users\\91824\\Downloads\\excel2.csv';
 parseAndUploadXLSX(filePath);
