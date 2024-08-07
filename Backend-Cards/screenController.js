@@ -6,6 +6,8 @@ exports.getCost = async(req,res) =>{
     try{
         const cinema = req.params.cinema;
         const screen = req.params.screen;
+        const placement = req.params.placement;
+
         const cost = await APIscreenCost.findOne({cinemaName : cinema, ScreenID: screen});
         //http://localhost:5000/api/screen/cost/Vandana Heritage/1
          
@@ -15,7 +17,13 @@ exports.getCost = async(req,res) =>{
         }
         else
         {
+            if(placement==0)
             return res.status(200).json(cost.cost);
+            else if(placement==1)
+            return res.status(200).json(2* cost.cost);
+            else if(placement==2)
+            return res.status(200).json(1.5* cost.cost);
+            
         }
     }
     catch(error){
