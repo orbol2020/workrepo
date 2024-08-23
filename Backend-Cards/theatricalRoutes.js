@@ -27,4 +27,7 @@ router.delete('/delete/mall/:mall', theatricalController.deleteByMall);
 // Route to add a new theatrical entry
 router.post('/add', theatricalController.addTheatricalEntry);
 
+//Route to get all theatres by city name
+router.get("/city/:city", theatricalController.getTheatres);
+
 module.exports = router;
