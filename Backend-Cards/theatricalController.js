@@ -148,3 +148,23 @@ exports.getTheatres = async (req, res) => {
         res.status(400).json({ message: "Some error occurred", error: error.message });
     }
 };
+
+exports.getImageByMall = async (req,res) => {
+
+    try{
+        const mallName = req.params.mall;
+        const imageLink = await Theatrical.find({mall: mallName}).select("image");
+
+        if (!imageLink || imageLink.length === 0) {
+            return res.status(404).json({ message: "No Image URL Found" });
+        } else {
+            return res.status(200).json({ imageLink});
+        }
+
+    }
+
+    catch(error)
+    {
+        res.status(400).json({message: "Some error occurred", error: error.message});
+    }
+}
